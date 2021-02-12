@@ -1,0 +1,41 @@
+.sidepanel {
+    color: black;
+    font-family: 'Anonymous Pro', monospace;
+    text-align: left;
+    padding: 20px;
+  }
+  
+label {
+    font-size: large;
+    font-family: 'Anonymous Pro', monospace;
+    margin-right: 4%;
+}
+
+.checkbox-section {
+    padding-top: 1%;
+}
+
+.filter-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+.labels {
+    padding-bottom: 5%;
+}
+
+.right-label {
+    float: right;
+}
+
+.left-label {
+    float: left;
+}
+
+#button {
+    font-size: large;
+    margin-top: 10%;
+}
+  

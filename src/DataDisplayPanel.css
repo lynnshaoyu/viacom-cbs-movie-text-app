@@ -1,0 +1,26 @@
+.script-item {
+    margin-top: 2%;
+    border: solid;
+    border-radius: 1rem;
+    background-color: rgba(131, 179, 209, 0.589) ;
+    border-color: rgba(211, 236, 252, 0.589) ;
+    padding: 1%;
+}
+
+.info {
+    color: black;
+    font-size: medium;
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+
+.imdb-label {
+    display: block;
+    float: right;
+    padding-bottom: 3%;
+}
+
+.char-and-movie-details {
+    display: block;
+    float: left;
+}
