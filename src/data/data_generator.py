@@ -1,4 +1,4 @@
-# Python script to convert txt files to useful json files with relevant data
+# Python script to convert txt files to json files with relevant data
 import json 
 
 text_file_dicts = {}
@@ -15,7 +15,7 @@ schemas = [
     ["char_ID_1", "char_ID_2", "movie_ID", "line_ID_list"],
 ]
 
-# Function to strip non digit elements from string for data cleaning, before conversion to numerical type
+# Helper function to clean non digit data before numerical type conversion
 def strip_non_digit_elems(string):
     output = ""
     for elem in string:
@@ -23,15 +23,15 @@ def strip_non_digit_elems(string):
             output += elem
     return int(output)
 
-# Function to split up and clean genre string into array of genres
+# Turn genres string into list of genres
 def split_genre_string(genre_string):
     useless, genre_string_stripped = genre_string.split("[")
     genre_string_clean, useless = genre_string_stripped.split("]\n")
     genre_string_clean = genre_string_clean.replace("'", "")
-    arr = genre_string_clean.split(", ")
+    arr = genre_string_clean.split(", ");
     return arr
 
-# For each input txt file, clean data and convert to json 
+# Clean 4 txt files and conver to json
 for i in range(4):
     filename = text_file_names[i] + ".txt"
     schema = schemas[i]
@@ -69,8 +69,8 @@ for i in range(4):
     
     text_file_dicts[text_file_names[i]] = dict1
 
-# Create Filter Data file, that has all possible values for each relevant filter field in the data
-# to be used in the filter side panel
+# Create filter_data file with all possible values for relevant fields,\
+# to be used in filter side panel
 filter_data_filename = "filter_data"
 filter_data_dict = {}
 credit_line_pos = set()
@@ -107,13 +107,14 @@ out_file = open(filter_data_filename + ".json", "w")
 json.dump(filter_data_dict, out_file) 
 out_file.close()
 
-# Create Denormalized Data json combining movie metadata, character metadata and movie line data
+# Create denormalized data set for lines, movies metadata and characters metadata
 import pandas as pd
 filename = "denormalized_lines_data.json"
 
 movie_data_df = pd.DataFrame.from_records(text_file_dicts["movie_titles_metadata"]["data"])
 char_df = pd.DataFrame.from_records(text_file_dicts["movie_characters_metadata"]["data"])
 lines_df = pd.DataFrame.from_records(text_file_dicts["movie_lines"]["data"])
+
 del char_df["movie_ID"]
 del char_df["movie_title"]
 del lines_df["char_name"]
